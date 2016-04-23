@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\Licenta\artoolkit5-master\AndroidStudioProjects\ARSimpleNativeCarsProj\aRSimpleNativeCars\build\intermediates\exploded-aar\ARSimpleNativeCarsProj\aRBaseLib\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="44b025e216f91da596373dc8e6ade4a694e550b8">
+        <dex dex="D:\Licenta\artoolkit5-master\AndroidStudioProjects\ARSimpleNativeCarsProj\aRSimpleNativeCars\build\intermediates\pre-dexed\debug\classes-9506bba4eac74d601a5d451796b83783c1eb9b5d.jar" />
+    </item>
+
+</items>
