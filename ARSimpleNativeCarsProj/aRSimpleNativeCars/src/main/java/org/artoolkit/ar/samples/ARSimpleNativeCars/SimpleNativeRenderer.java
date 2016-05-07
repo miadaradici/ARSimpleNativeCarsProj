@@ -82,6 +82,7 @@ public class SimpleNativeRenderer extends ARRenderer {
      */
     @Override
 	public boolean configureARScene() {
+
     	SimpleNativeRenderer.demoInitialise();
     	return true;
     }
@@ -100,6 +101,8 @@ public class SimpleNativeRenderer extends ARRenderer {
 
     @Override
     public void draw(GL10 gl) {
+
+
     	SimpleNativeRenderer.demoDrawFrame();
 
     	if (counter.frame()) Log.i("demo", counter.toString());

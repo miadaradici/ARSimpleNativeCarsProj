@@ -8,7 +8,7 @@ public final class BuildConfig {
   public static final String APPLICATION_ID = "org.artoolkit.ar.samples.ARSimpleNativeCars.test";
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "all";
-  public static final int VERSION_CODE = 5;
+  public static final int VERSION_CODE = 9;
   public static final String VERSION_NAME = "1.0";
   // Fields from default config.
   public static final int VALUE = 1;

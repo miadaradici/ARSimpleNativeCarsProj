@@ -71,7 +71,7 @@ typedef struct ARModel {
 	GLMmodel* obj;
 } ARModel;
 
-#define NUM_MODELS 2
+#define NUM_MODELS 5
 static ARModel models[NUM_MODELS] = {0};
 
 static float lightAmbient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
@@ -80,10 +80,15 @@ static float lightPosition[4] = {0.0f, 0.0f, 1.0f, 0.0f};
 
 JNIEXPORT void JNICALL JNIFUNCTION_DEMO(demoInitialise(JNIEnv* env, jobject object)) {
 	
-	const char *model0file = "Data/models/horse-obj/horse-obj.obj";
-	const char *model1file = "Data/models/Ferrari_Modena_Spider.obj";
+	const char *model1file = "Data/models/horse-obj/horse-obj.obj";
+	const char *model0file = "Data/models/Wolf.obj";
+	const char *model2file = "Data/models/cat.obj";
+	const char *model3file = "Data/models/Giraffe.obj";
+	const char *model4file = "Data/models/dog.obj";
 
-	models[0].patternID = arwAddMarker("single;Data/patt.hiro;80");
+
+	//PRIMUL MODEL - LUP
+	models[0].patternID = arwAddMarker("single;Data/patt.wolf;80");
 	arwSetMarkerOptionBool(models[0].patternID, ARW_MARKER_OPTION_SQUARE_USE_CONT_POSE_ESTIMATION, false);
 	arwSetMarkerOptionBool(models[0].patternID, ARW_MARKER_OPTION_FILTERED, true);
 
@@ -92,12 +97,13 @@ JNIEXPORT void JNICALL JNIFUNCTION_DEMO(demoInitialise(JNIEnv* env, jobject obje
 		LOGE("Error loading model from file '%s'.", model0file);
 		exit(-1);
 	}
-	glmScale(models[0].obj, 1.0f);
-	//glmRotate(models[0].obj, 3.14159f / 2.0f, 1.0f, 0.0f, 0.0f);
+	glmScale(models[0].obj, 30.0f);
+	glmRotate(models[0].obj, 3.14159f / 2.0f, 1.0f, 0.0f, 0.0f);
 	glmCreateArrays(models[0].obj, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
 	models[0].visible = false;
-	
-	models[1].patternID = arwAddMarker("single;Data/patt.kanji;80");
+
+	//AL DOILEA MODEL
+	models[1].patternID = arwAddMarker("single;Data/patt.yourpatt;80");
 	arwSetMarkerOptionBool(models[1].patternID, ARW_MARKER_OPTION_SQUARE_USE_CONT_POSE_ESTIMATION, false);
 	arwSetMarkerOptionBool(models[1].patternID, ARW_MARKER_OPTION_FILTERED, true);
 
@@ -106,10 +112,56 @@ JNIEXPORT void JNICALL JNIFUNCTION_DEMO(demoInitialise(JNIEnv* env, jobject obje
 		LOGE("Error loading model from file '%s'.", model1file);
 		exit(-1);
 	}
-	glmScale(models[1].obj, 0.035f);
-	//glmRotate(models[1].obj, 3.14159f / 2.0f, 1.0f, 0.0f, 0.0f);
+	glmScale(models[1].obj, 1.0f);
+	glmRotate(models[1].obj, 3.14159f / 2.0f, 1.0f, 0.0f, 0.0f);
 	glmCreateArrays(models[1].obj, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
 	models[1].visible = false;
+
+	//AL TREILEA MODEL
+	models[2].patternID = arwAddMarker("single;Data/patt.kitty;80");
+	arwSetMarkerOptionBool(models[2].patternID, ARW_MARKER_OPTION_SQUARE_USE_CONT_POSE_ESTIMATION, false);
+	arwSetMarkerOptionBool(models[2].patternID, ARW_MARKER_OPTION_FILTERED, true);
+	models[2].obj = glmReadOBJ2(model2file, 0, 0); // context 0, don't read textures yet.
+	if (!models[2].obj) {
+		LOGE("Error loading model from file '%s'.", model2file);
+		exit(-1);
+	}
+
+	glmScale(models[2].obj, 75.0f);
+	glmRotate(models[2].obj, 3.14159f / 2.0f, 1.0f, 0.0f, 0.0f);
+	glmCreateArrays(models[2].obj, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
+	models[2].visible = false;
+
+	//AL PATRULEA MODEL
+	models[3].patternID = arwAddMarker("single;Data/patt.giraffe;80");
+	arwSetMarkerOptionBool(models[3].patternID, ARW_MARKER_OPTION_SQUARE_USE_CONT_POSE_ESTIMATION, false);
+	arwSetMarkerOptionBool(models[3].patternID, ARW_MARKER_OPTION_FILTERED, true);
+	models[3].obj = glmReadOBJ2(model3file, 0, 0); // context 0, don't read textures yet.
+	if (!models[3].obj) {
+		LOGE("Error loading model from file '%s'.", model3file);
+		exit(-1);
+	}
+
+	glmScale(models[3].obj, 10.0f);
+	glmRotate(models[3].obj, 3.14159f / 2.0f, 1.0f, 0.0f, 0.0f);
+	glmCreateArrays(models[3].obj, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
+	models[3].visible = false;
+
+	//AL 5lea MODEL
+	models[4].patternID = arwAddMarker("single;Data/patt.dog;80");
+	arwSetMarkerOptionBool(models[4].patternID, ARW_MARKER_OPTION_SQUARE_USE_CONT_POSE_ESTIMATION, false);
+	arwSetMarkerOptionBool(models[4].patternID, ARW_MARKER_OPTION_FILTERED, true);
+	models[4].obj = glmReadOBJ2(model4file, 0, 0); // context 0, don't read textures yet.
+	if (!models[4].obj) {
+	LOGE("Error loading model from file '%s'.", model4file);
+	exit(-1);
+	}
+
+	glmScale(models[4].obj, 1.0f);
+	glmRotate(models[4].obj, 3.14159f / 2.0f, 1.0f, 0.0f, 0.0f);
+	glmCreateArrays(models[4].obj, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
+	models[4].visible = false;
+
 }
 
 JNIEXPORT void JNICALL JNIFUNCTION_DEMO(demoShutdown(JNIEnv* env, jobject object)) {
@@ -148,14 +200,16 @@ JNIEXPORT void JNICALL JNIFUNCTION_DEMO(demoDrawFrame(JNIEnv* env, jobject obj))
 	for (int i = 0; i < NUM_MODELS; i++) {		
 		models[i].visible = arwQueryMarkerTransformation(models[i].patternID, models[i].transformationMatrix);		
 			
-		if (models[i].visible) {					
+		if (models[i].visible) {
+
 			glLoadMatrixf(models[i].transformationMatrix);		
 			
 			glLightfv(GL_LIGHT0, GL_AMBIENT, lightAmbient);
 			glLightfv(GL_LIGHT0, GL_DIFFUSE, lightDiffuse);
 			glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
-			
+
 			glmDrawArrays(models[i].obj, 0);
+
 		}
 
 	}
