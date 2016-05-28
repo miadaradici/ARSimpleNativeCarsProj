@@ -54,6 +54,8 @@ import org.artoolkit.ar.base.AndroidUtils;
 import org.artoolkit.ar.base.rendering.ARRenderer;
 import org.artoolkit.ar.samples.ARSimpleNativeCars.R;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.PixelFormat;
 import android.os.Build;
@@ -63,17 +65,20 @@ import android.view.ViewConfiguration;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-
+import android.content.res.AssetManager;
 public class ARSimpleNativeCarsActivity extends ARActivity {
 
-	private SimpleNativeRenderer simpleNativeRenderer = new SimpleNativeRenderer();
+    static AssetManager assetManager;
+	private SimpleNativeRenderer simpleNativeRenderer; // = new SimpleNativeRenderer(assetManager);
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main);
-
+        assetManager = getAssets();
+        simpleNativeRenderer = new SimpleNativeRenderer(assetManager);
     }
 
     public void onStop() {

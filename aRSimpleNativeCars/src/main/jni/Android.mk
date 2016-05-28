@@ -91,9 +91,10 @@ ifeq ($(APP_OPTIM),debug)
 endif
 
 LOCAL_C_INCLUDES += $(ARTOOLKIT_DIR)/../include/android $(ARTOOLKIT_DIR)/../include
-LOCAL_LDLIBS += -llog -lGLESv1_CM
+LOCAL_LDLIBS += -llog -lGLESv1_CM -lOpenSLES
 LOCAL_STATIC_LIBRARIES += eden
 LOCAL_SHARED_LIBRARIES += ARWrapper
 #LOCAL_SHARED_LIBRARIES += $(CURL_LIBS)
-
+LOCAL_SHARED_LIBRARIES += libandroid
+LOCAL_LDLIBS += -landroid
 include $(BUILD_SHARED_LIBRARY)

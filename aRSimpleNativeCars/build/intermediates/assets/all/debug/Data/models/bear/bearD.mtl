@@ -1,0 +1,18 @@
+newmtl bearD:bear
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd bear.jpg
+Ni 1.00
+Ks 0.15 0.15 0.15
+Ns 4.00
+newmtl bearD:teeths
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.59 0.59 0.59
+Tf 1.00 1.00 1.00
+map_Kd bearteeth.jpg
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 3.00

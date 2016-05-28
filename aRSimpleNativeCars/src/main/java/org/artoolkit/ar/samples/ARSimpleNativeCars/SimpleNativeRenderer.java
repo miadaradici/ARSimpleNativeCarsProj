@@ -55,6 +55,8 @@ import javax.microedition.khronos.opengles.GL10;
 import org.artoolkit.ar.base.FPSCounter;
 import org.artoolkit.ar.base.rendering.ARRenderer;
 
+import android.content.res.AssetManager;
+import android.os.Bundle;
 import android.util.Log;
 
 public class SimpleNativeRenderer extends ARRenderer {
@@ -65,13 +67,11 @@ public class SimpleNativeRenderer extends ARRenderer {
     	System.loadLibrary("ARWrapper");
     	System.loadLibrary("ARWrapperNativeCarsExample");
     }
-
-    public static native void demoInitialise();
+    public static native void demoInitialise(AssetManager assetManager);
     public static native void demoShutdown();
     public static native void demoSurfaceCreated();
     public static native void demoSurfaceChanged(int w, int h);
     public static native void demoDrawFrame();
-
     private FPSCounter counter = new FPSCounter();
 
 	/**
@@ -80,10 +80,16 @@ public class SimpleNativeRenderer extends ARRenderer {
      * Note that this does not run on the OpenGL thread. Use onSurfaceCreated/demoSurfaceCreated
      * to do OpenGL initialisation.
      */
+    static private AssetManager assetManager;
+    SimpleNativeRenderer(AssetManager asset ){
+        super();
+        assetManager = asset;
+    }
+
     @Override
 	public boolean configureARScene() {
 
-    	SimpleNativeRenderer.demoInitialise();
+    	SimpleNativeRenderer.demoInitialise( assetManager);
     	return true;
     }
 
